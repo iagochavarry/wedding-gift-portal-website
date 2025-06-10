@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+.header {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(160, 149, 107, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-normal);
+}
+
+.logo:hover {
+  transform: translateY(-1px);
+}
+
+/* Logo com J+I dentro do coração */
+.logoIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.heartIcon {
+  color: var(--color-primary);
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 4px rgba(160, 149, 107, 0.3));
+}
+
+.initials {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.link {
+  color: var(--color-neutral-700);
+  font-weight: 500;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-full);
+  position: relative;
+  font-size: var(--font-size-base);
+}
+
+.link:hover {
+  color: var(--color-primary);
+  background-color: rgba(160, 149, 107, 0.08);
+  transform: translateY(-1px);
+}
+
+.link.active {
+  color: var(--color-primary);
+  background-color: rgba(160, 149, 107, 0.12);
+  font-weight: 600;
+}
+
+.link:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 1px;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 24px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .heartIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .initials {
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .nav {
+    gap: var(--spacing-4);
+  }
+
+  .link {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-2) var(--spacing-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--font-size-lg);
+  }
+
+  .nav {
+    gap: var(--spacing-2);
+  }
+}

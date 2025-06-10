@@ -1,0 +1,216 @@
+# Wedding Website - Arquitetura e Decisões Técnicas
+
+## Visão Geral
+Website de casamento moderno com duas páginas principais:
+1. Landing Page (Home) - Emotiva e informativa
+2. Lista de Presentes - Categorizada e interativa
+
+## Decisões Arquiteturais
+
+### 1. Estrutura Multi-página
+**Decisão**: Usar React Router para criar uma SPA com múltiplas rotas
+**Razão**: Melhor experiência do usuário, SEO otimizado, navegação fluida
+**Implementação**: 
+- "/" -> Landing Page
+- "/presentes" -> Lista de Presentes
+
+### 2. Categorização de Presentes
+**Decisão**: Dividir presentes em "Casa" e "Lua de Mel"
+**Razão**: Facilita a escolha do usuário e cria narrativa emocional
+**Implementação**: Campo `category` no tipo Gift com valores 'casa' | 'lua-de-mel'
+
+### 3. Design System Inspirado no Apple
+**Decisão**: CSS Variables + Design minimalista e clean
+**Razão**: Aparência moderna, profissional e emotiva
+**Implementação**: 
+- Variáveis CSS globais para cores, espaçamentos, tipografia
+- Componentes consistentes com design system
+
+### 4. Componentização por Feature
+**Decisão**: Separar componentes em "ui" (reutilizáveis) e "features" (específicos)
+**Razão**: Manutenibilidade, reutilização, separação de responsabilidades
+**Estrutura**:
+```
+components/
+├── ui/           # Button, Modal (reutilizáveis)
+└── features/     # GiftCard, Header, Footer (específicos)
+```
+
+### 5. Gestão de Estado Local
+**Decisão**: useState para modais, useMemo para categorização
+**Razão**: Estado simples não justifica Redux/Context
+**Implementação**: Estado local nos componentes que precisam
+
+## Padrões de Design
+
+### 1. Composição de Componentes
+- Props interfaces bem definidas
+- Children para flexibilidade
+- forwardRef para refs customizadas
+
+### 2. CSS Modules
+- Estilos isolados por componente
+- Prevenção de conflitos de CSS
+- Co-localização de estilos com componentes
+
+### 3. TypeScript Strict
+- Tipagem rigorosa para prevenção de erros
+- Interfaces para todas as props
+- Union types para categorias
+
+### 4. Asset Management
+- Estrutura organizada por funcionalidade
+- READMEs para orientar sobre assets necessários
+- Paths absolutos para melhor manutenção
+
+## Estrutura de Dados
+
+### Gift Interface
+```typescript
+interface Gift {
+  id: string;           # Identificador único
+  name: string;         # Nome do presente
+  description: string;  # Descrição detalhada
+  price: number;        # Preço em BRL
+  image: string;        # Caminho para imagem
+  qrCode: string;       # Caminho para QR Code Pix
+  category: 'casa' | 'lua-de-mel';  # Categoria
+}
+```
+
+## Fluxo de Navegação
+
+1. **Landing Page (/)**
+   - Hero com foto do casal e save the date
+   - Informações sobre cerimônia e recepção
+   - CTA para lista de presentes
+
+2. **Lista de Presentes (/presentes)**
+   - Seção "Sobre nós" com fotos do apartamento e lua de mel
+   - Grid de presentes categorizado
+   - Modal com detalhes e QR Code
+   - Integração WhatsApp
+
+## Responsividade
+
+### Breakpoints
+- Mobile: <768px (layout vertical, navegação simplificada)
+- Tablet: 768px-1199px (grid adaptado)
+- Desktop: 1200px+ (layout completo)
+
+### Estratégia Mobile-First
+- CSS escrito primeiro para mobile
+- Media queries para expansão em telas maiores
+- Touch-friendly (botões maiores, espaçamentos adequados)
+
+## Performance
+
+### Otimizações Implementadas
+- CSS Variables para evitar recálculos
+- Lazy loading implícito de rotas
+- Imagens otimizadas via CSS object-fit
+- Transições CSS para animações performáticas
+
+### Otimizações Pendentes
+- Lazy loading de imagens
+- Compressão de assets
+- PWA features (opcional)
+
+## Acessibilidade
+
+### Implementado
+- Semantic HTML (header, main, section, nav)
+- Alt text para imagens
+- ARIA labels para botões funcionais
+- Keyboard navigation
+- Contrast ratios adequados
+
+### Melhorias Futuras
+- Focus management
+- Screen reader testing
+- ARIA live regions para feedback
+
+## Integração Externa
+
+### WhatsApp
+- URL scheme para abrir conversa
+- Mensagem pré-formatada com nome do presente
+- Abre em nova aba/app
+
+### Pagamento (Pix)
+- QR Codes estáticos pré-gerados
+- Valores fixos por presente
+- Responsabilidade do usuário processar pagamento
+
+## Padrões de Código
+
+### Nomenclatura
+- Components: PascalCase (GiftCard)
+- Files: PascalCase para componentes, camelCase para utils
+- CSS Classes: camelCase via CSS Modules
+- Variables: camelCase
+
+### Estrutura de Arquivos
+```
+ComponentName/
+├── ComponentName.tsx
+├── ComponentName.module.css
+└── index.ts (re-export opcional)
+```
+
+### Imports
+- React imports first
+- External libraries
+- Internal components/utils
+- Styles last
+
+## Deploy e Build
+
+### Build Process
+- Vite para bundling
+- TypeScript compilation
+- CSS processing e minification
+- Asset optimization
+
+### Deploy Strategy
+- Static site generation
+- CDN-friendly asset paths
+- Vercel/Netlify ready
+
+## Manutenção
+
+### Adição de Presentes
+1. Adicionar imagem em `public/assets/gifts/`
+2. Gerar QR Code e salvar em `public/assets/qrcodes/`
+3. Atualizar `src/data/gifts.ts`
+
+### Alteração de Design
+1. Modificar variáveis CSS em `src/styles/globals.css`
+2. Ajustar componentes específicos se necessário
+3. Testar responsividade
+
+### Alteração de Conteúdo
+- Textos: Direto nos componentes TSX
+- Imagens: Substituir em `public/assets/`
+- Dados: Modificar arrays em `src/data/`
+
+## Limitações Conhecidas
+
+1. **Estado Global**: Não implementado (não necessário para escopo atual)
+2. **SEO**: Básico (meta tags podem ser expandidas)
+3. **Analytics**: Não implementado
+4. **Teste**: Não implementado (pode ser adicionado)
+
+## Futuras Expansões
+
+### Funcionalidades
+- Sistema de RSVP
+- Galeria de fotos
+- Timeline do relacionamento
+- Mensagens dos convidados
+
+### Técnicas
+- PWA para funcionalidade offline
+- Sistema de notificações
+- Cache estratégico
+- Testes automatizados 

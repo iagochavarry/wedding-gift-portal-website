@@ -1,0 +1,243 @@
+.carousel {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  /* box-shadow: var(--shadow-md); */
+}
+
+.photosContainer {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 380px;
+  padding: var(--spacing-2) 0;
+}
+
+.photoItem {
+  flex-shrink: 0;
+  padding: 0 var(--spacing-2);
+}
+
+/* Remover padding nas extremidades */
+.photoItem:first-child {
+  padding-left: 0;
+}
+
+.photoItem:last-child {
+  padding-right: 0;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+/* Fade overlays - usando a cor de fundo do site */
+.fadeLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(251, 249, 244, 0.4),
+    rgba(251, 249, 244, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.fadeRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(
+    to left,
+    rgba(251, 249, 244, 0.4),
+    rgba(251, 249, 244, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Navigation buttons - aparecem apenas no hover do carrossel */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 3;
+  box-shadow: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carouselContainer:hover .navButton {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-neutral-700);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prevButton {
+  left: var(--spacing-4);
+}
+
+.nextButton {
+  right: var(--spacing-4);
+}
+
+/* Progress indicator */
+.progressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.progressBar {
+  flex: 1;
+  max-width: 200px;
+  height: 4px;
+  background-color: var(--color-neutral-300);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.progressText {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  font-weight: 500;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+  .photosContainer {
+    height: 350px;
+    padding: var(--spacing-1) 0;
+  }
+
+  .photo {
+    border-radius: 10px;
+  }
+
+  .photo:hover {
+    transform: scale(1.03);
+    border-radius: 14px;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .photosContainer {
+    height: 300px;
+    padding: var(--spacing-1) 0;
+  }
+
+  .photo {
+    border-radius: 8px;
+  }
+
+  .photo:hover {
+    transform: scale(1.02);
+    border-radius: 12px;
+  }
+
+  .fadeLeft,
+  .fadeRight {
+    width: 25%;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carouselContainer:hover .navButton {
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .prevButton {
+    left: var(--spacing-2);
+  }
+
+  .nextButton {
+    right: var(--spacing-2);
+  }
+
+  .progressContainer {
+    gap: var(--spacing-2);
+  }
+
+  .progressBar {
+    max-width: 150px;
+  }
+
+  .progressText {
+    font-size: var(--font-size-xs);
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photosContainer {
+    height: 250px;
+  }
+
+  .fadeLeft,
+  .fadeRight {
+    width: 30%;
+  }
+}

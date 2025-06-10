@@ -1,0 +1,30 @@
+.footer {
+  background-color: white;
+  border-top: 1px solid var(--color-neutral-200);
+  padding: var(--spacing-6) 0;
+  margin-top: var(--spacing-16);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+  text-align: center;
+}
+
+.copyright {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: var(--spacing-4) 0;
+    margin-top: var(--spacing-8);
+  }
+
+  .container {
+    padding: 0 var(--spacing-2);
+  }
+}
