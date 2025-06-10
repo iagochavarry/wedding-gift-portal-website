@@ -169,6 +169,20 @@
     text-align: center;
   }
 
+  /* First section (Nossa Nova Casa) - Text above image */
+  .aboutSection:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutSection:first-child .aboutText {
+    order: 1;
+  }
+
+  .aboutSection:first-child .aboutImageContainer {
+    order: 2;
+  }
+
   .aboutText {
     text-align: center;
   }
