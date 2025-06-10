@@ -61,9 +61,6 @@ export const MultiPhotoCarousel = ({
   const photoWidth = 100 / visiblePhotos;
   const translateX = -currentIndex * photoWidth;
 
-  const startPhoto = currentIndex + 1;
-  const endPhoto = Math.min(currentIndex + visiblePhotos, images.length);
-
   return (
     <>
       {/* Images Container - Separate from progress bar */}

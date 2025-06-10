@@ -30,7 +30,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
-    "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
 
     /* Paths */
