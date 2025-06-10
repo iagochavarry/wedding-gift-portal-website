@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Home, MapPin } from 'lucide-react';
+import { Home, MapPin, Gift } from 'lucide-react';
 import { GiftCard } from '../../components/features/GiftCard/GiftCard';
 import { gifts } from '../../data/gifts';
 import styles from './Gifts.module.css';
@@ -8,7 +8,8 @@ export const Gifts = () => {
   const giftsByCategory = useMemo(() => {
     const casa = gifts.filter((gift) => gift.category === 'casa');
     const luaDeMel = gifts.filter((gift) => gift.category === 'lua-de-mel');
-    return { casa, luaDeMel };
+    const customizado = gifts.filter((gift) => gift.category === 'customizado');
+    return { casa, luaDeMel, customizado };
   }, []);
 
   return (
@@ -101,6 +102,25 @@ export const Gifts = () => {
             {giftsByCategory.luaDeMel.map((gift) => (
               <GiftCard key={gift.id} gift={gift} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Presente Customizado Section */}
+      <section className={styles.customGiftSection}>
+        <div className={styles.sectionContent}>
+          <div className={styles.customGiftContent}>
+            <Gift className={styles.customGiftIcon} />
+            <h2 className={styles.customGiftTitle}>Presente Customizado</h2>
+            <p className={styles.customGiftDescription}>
+              Caso deseje dar um presente customizado, clique aqui.
+            </p>
+
+            <div className={styles.customGiftCard}>
+              {giftsByCategory.customizado.map((gift) => (
+                <GiftCard key={gift.id} gift={gift} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

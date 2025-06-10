@@ -126,6 +126,10 @@ export const Home = () => {
           <div className={styles['receptionGrid']}>
             <div className={styles['receptionInfo']}>
               <h3>Mansão Alvite</h3>
+              <p className={styles['venueAddress']}>
+                <MapPin className={styles['icon']} />
+                Rua dos Artistas, 35 - Santa Teresa, Rio de Janeiro - RJ
+              </p>
               <p className={styles['receptionDescription']}>
                 Após a cerimônia, vamos celebrar com uma festa inesquecível! Música, dança, comida
                 deliciosa e muita alegria nos esperam.

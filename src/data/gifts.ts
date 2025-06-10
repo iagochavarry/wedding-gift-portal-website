@@ -46,6 +46,10 @@ const qrCodes = {
     asset: '/assets/qrcodes/650-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406350.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***630458D4',
   },
+  '0-00': {
+    asset: '/assets/qrcodes/0-00.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304A32E',
+  },
 };
 
 export const gifts: Gift[] = [
@@ -256,5 +260,16 @@ export const gifts: Gift[] = [
     qrCode: qrCodes['350-00'].asset,
     code: qrCodes['350-00'].code,
     category: 'lua-de-mel',
+  },
+  {
+    id: '20',
+    name: 'Presente Customizado',
+    description:
+      'Escolha o valor que desejar para nos presentear! Toda contribuição será recebida com muito carinho.',
+    price: 0.0,
+    image: '/assets/gifts/presente-customizado.png',
+    qrCode: qrCodes['0-00'].asset,
+    code: qrCodes['0-00'].code,
+    category: 'customizado',
   },
 ];

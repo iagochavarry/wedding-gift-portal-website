@@ -6,7 +6,7 @@ export interface Gift {
   image: string;
   qrCode: string;
   code: string;
-  category: 'casa' | 'lua-de-mel';
+  category: 'casa' | 'lua-de-mel' | 'customizado';
 }
 
 export type GiftCategory = 'Cozinha' | 'Cama' | 'Banho' | 'Decoração' | 'Outros';
