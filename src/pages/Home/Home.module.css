@@ -539,6 +539,8 @@
   .countdown {
     font-size: var(--font-size-sm);
     padding: var(--spacing-3) var(--spacing-4);
+    margin: 0 auto;
+    align-self: center;
   }
 
   .galleryTitle {
@@ -601,6 +603,8 @@
     flex-direction: column;
     gap: var(--spacing-2);
     text-align: center;
+    margin: 0 auto;
+    align-self: center;
   }
 
   .saveTheDateImage {
