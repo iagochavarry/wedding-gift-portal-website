@@ -2,12 +2,12 @@ import { Gift } from '../types/gift';
 
 const qrCodes = {
   '3300-00': {
-    asset: '/assets/qrcodes/2499-88.jpeg', // Using 2499 QR code for 3300
-    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654073300.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304F2E1',
+    asset: '/assets/qrcodes/3300-00.jpeg', // Using 2499 QR code for 3300
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654073300.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63045088',
   },
-  '2800-00': {
-    asset: '/assets/qrcodes/2499-88.jpeg', // Using 2499 QR code for 2800
-    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654072800.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63049B7A',
+  '2899-00': {
+    asset: '/assets/qrcodes/2899-00.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654072899.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63049B01',
   },
   '2499-88': {
     asset: '/assets/qrcodes/2499-88.jpeg',
@@ -17,10 +17,6 @@ const qrCodes = {
     asset: '/assets/qrcodes/1550-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654071550.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304E12A',
   },
-  '1500-00': {
-    asset: '/assets/qrcodes/1550-00.jpeg',
-    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654071500.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304A1B2',
-  },
   '1150-00': {
     asset: '/assets/qrcodes/1150-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de352040000530398654071150.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304E00E',
@@ -29,21 +25,37 @@ const qrCodes = {
     asset: '/assets/qrcodes/850-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406850.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304A366',
   },
+  '749-00': {
+    asset: '/assets/qrcodes/749-00.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406749.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63040E06',
+  },
   '650-00': {
     asset: '/assets/qrcodes/650-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406650.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63045D8B',
+  },
+  '614-90': {
+    asset: '/assets/qrcodes/614-90.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406749.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63040E06',
+  },
+  '569-00': {
+    asset: '/assets/qrcodes/569-00.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406569.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304E45E',
   },
   '450-00': {
     asset: '/assets/qrcodes/450-00.jpeg',
 
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406450.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304AFB2',
   },
+  '429-00': {
+    asset: '/assets/qrcodes/429-00.jpeg',
+    code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406429.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***63042590',
+  },
   '380-00': {
-    asset: '/assets/qrcodes/650-00.jpeg', // Using 650 QR code for 380
+    asset: '/assets/qrcodes/380-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406380.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304C5A3',
   },
   '350-00': {
-    asset: '/assets/qrcodes/650-00.jpeg',
+    asset: '/assets/qrcodes/350-00.jpeg',
     code: '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865406350.005802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***630458D4',
   },
   '0-00': {
@@ -69,10 +81,10 @@ export const gifts: Gift[] = [
     name: 'Lava-louças',
     description:
       'Lava-louças moderna e eficiente, ideal para otimizar o tempo na cozinha e manter a louça sempre limpa.',
-    price: 2800.0,
+    price: 2899.0,
     image: '/assets/gifts/lava-loucas.png',
-    qrCode: qrCodes['2800-00'].asset,
-    code: qrCodes['2800-00'].code,
+    qrCode: qrCodes['2899-00'].asset,
+    code: qrCodes['2899-00'].code,
     category: 'casa',
   },
   {
@@ -84,6 +96,17 @@ export const gifts: Gift[] = [
     image: '/assets/gifts/buffet-chico-abracasa.png',
     qrCode: qrCodes['2499-88'].asset,
     code: qrCodes['2499-88'].code,
+    category: 'casa',
+  },
+  {
+    id: '21',
+    name: 'Jogo de Cama Completo',
+    description:
+      'Jogo de cama completo de alta qualidade, com lençóis, fronhas e edredom para um quarto aconchegante.',
+    price: 749.0,
+    image: '/assets/gifts/jogo-cama-completo.png',
+    qrCode: qrCodes['749-00'].asset,
+    code: qrCodes['749-00'].code,
     category: 'casa',
   },
   {
@@ -113,10 +136,10 @@ export const gifts: Gift[] = [
     name: 'Quadro para Sala',
     description:
       'Quadro decorativo elegante para sala de estar, com design moderno que complementa a decoração.',
-    price: 650.0,
+    price: 569.0,
     image: '/assets/gifts/quadro-sala.png',
-    qrCode: qrCodes['650-00'].asset,
-    code: qrCodes['650-00'].code,
+    qrCode: qrCodes['569-00'].asset,
+    code: qrCodes['569-00'].code,
     category: 'casa',
   },
   {
@@ -124,10 +147,10 @@ export const gifts: Gift[] = [
     name: 'Puff Bouclé',
     description:
       'Puff elegante em tecido bouclé, perfeito para complementar a decoração da sala com conforto e estilo.',
-    price: 450.0,
+    price: 429.0,
     image: '/assets/gifts/puff-boucle.png',
-    qrCode: qrCodes['450-00'].asset,
-    code: qrCodes['450-00'].code,
+    qrCode: qrCodes['429-00'].asset,
+    code: qrCodes['429-00'].code,
     category: 'casa',
   },
   {
@@ -152,17 +175,6 @@ export const gifts: Gift[] = [
     category: 'casa',
   },
   {
-    id: '5',
-    name: 'Liquidificador',
-    description:
-      'Liquidificador de alta potência para preparar sucos, vitaminas e receitas especiais.',
-    price: 350.0,
-    image: '/assets/gifts/liquidificador.png',
-    qrCode: qrCodes['350-00'].asset,
-    code: qrCodes['350-00'].code,
-    category: 'casa',
-  },
-  {
     id: '15',
     name: 'Quadro para Varanda',
     description:
@@ -174,14 +186,25 @@ export const gifts: Gift[] = [
     category: 'casa',
   },
   {
+    id: '5',
+    name: 'Liquidificador',
+    description:
+      'Liquidificador de alta potência para preparar sucos, vitaminas e receitas especiais.',
+    price: 350.0,
+    image: '/assets/gifts/liquidificador.png',
+    qrCode: qrCodes['350-00'].asset,
+    code: qrCodes['350-00'].code,
+    category: 'casa',
+  },
+  {
     id: '7',
     name: 'Diária em Puglia',
     description:
       'Uma diária inesquecível em um trullo típico da região de Puglia, Itália. Hospedagem charmosa e autêntica para nossa lua de mel.',
-    price: 1500.0,
+    price: 1550.0,
     image: '/assets/gifts/diaria-puglia-trulli.png',
-    qrCode: qrCodes['1500-00'].asset,
-    code: qrCodes['1500-00'].code,
+    qrCode: qrCodes['1550-00'].asset,
+    code: qrCodes['1550-00'].code,
     category: 'lua-de-mel',
   },
   {
@@ -244,10 +267,10 @@ export const gifts: Gift[] = [
     name: 'Jantar em Nápoles',
     description:
       'Jantar romântico em Nápoles, berço da pizza, com vista para o Golfo de Nápoles e culinária italiana autêntica.',
-    price: 380.0,
+    price: 429.0,
     image: '/assets/gifts/jantar-napoles.png',
-    qrCode: qrCodes['380-00'].asset,
-    code: qrCodes['380-00'].code,
+    qrCode: qrCodes['429-00'].asset,
+    code: qrCodes['429-00'].code,
     category: 'lua-de-mel',
   },
   {
@@ -255,10 +278,10 @@ export const gifts: Gift[] = [
     name: 'Aluguel de Carro na Itália',
     description:
       'Aluguel de carro para explorar a Itália com liberdade e conforto durante nossa lua de mel.',
-    price: 350.0,
+    price: 380.0,
     image: '/assets/gifts/aluguel-carro-italia.png',
-    qrCode: qrCodes['350-00'].asset,
-    code: qrCodes['350-00'].code,
+    qrCode: qrCodes['380-00'].asset,
+    code: qrCodes['380-00'].code,
     category: 'lua-de-mel',
   },
   {

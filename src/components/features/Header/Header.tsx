@@ -11,7 +11,6 @@ export const Header = () => {
         <Link to="/" className={styles['logo']}>
           <div className={styles['logoIcon']}>
             <Heart className={styles['heartIcon']} />
-            <span className={styles['initials']}>J+I</span>
           </div>
           <h1 className={styles['title']}>Jasmin e Iago</h1>
         </Link>

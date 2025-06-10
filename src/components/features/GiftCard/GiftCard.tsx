@@ -135,13 +135,11 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
             >
               {copied ? (
                 <>
-                  <Check size={16} />
-                  Código Copiado!
+                  <Check size={16} />ㅤ Código Copiado!
                 </>
               ) : (
                 <>
-                  <Copy size={16} />
-                  Copie o QR-code
+                  <Copy size={16} /> ㅤCopie o QR-code
                 </>
               )}
             </Button>
@@ -154,7 +152,7 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
             </div>
           ) : (
             <div className={styles['messageForm']}>
-              <h3>Após o pagamento, deixe sua mensagem para o casal</h3>
+              <h3>Em seguida, deixe sua mensagem para o casal</h3>
 
               <div className={styles['formGroup']}>
                 <label htmlFor="name">Nome:</label>
@@ -192,7 +190,7 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
                 ) : (
                   <>
                     <Send size={16} />
-                    Enviar Mensagem
+                    ㅤEnviar Mensagem
                   </>
                 )}
               </Button>
