@@ -128,11 +128,11 @@ export const Home = () => {
               <h3>Mansão Alvite</h3>
               <p className={styles['venueAddress']}>
                 <MapPin className={styles['icon']} />
-                Rua dos Artistas, 35 - Santa Teresa, Rio de Janeiro - RJ
+                R. Dr. Júlio Otoni, 444 - Santa Teresa, Rio de Janeiro
               </p>
               <p className={styles['receptionDescription']}>
-                Após a cerimônia, vamos celebrar com uma festa inesquecível! Música, dança, comida
-                deliciosa e muita alegria nos esperam.
+                Após a cerimônia, vamos celebrar com uma festa inesquecível em um local privilegiado
+                do Rio de Janeiro! Música, dança, comida deliciosa e muita alegria nos esperam.
               </p>
               <div className={styles['receptionDetails']}>
                 <div className={styles['detail']}>
