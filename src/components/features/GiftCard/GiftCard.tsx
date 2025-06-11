@@ -133,11 +133,13 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
             <div className={styles['paymentOptions']}>
               <h3 className={styles['paymentTitle']}>Escolha a forma de pagamento</h3>
               <div className={styles['paymentButtons']}>
-                <div className={styles['paymentButton']} onClick={() => setPaymentMethod('pix')}>
-                  <Smartphone className={styles['paymentButtonIcon']} />
-                  <h4 className={styles['paymentButtonTitle']}>PIX</h4>
-                  <p className={styles['paymentButtonDescription']}>Pagamento instantâneo</p>
-                </div>
+                {(gift.paymentMethods?.pix || gift.code) && (
+                  <div className={styles['paymentButton']} onClick={() => setPaymentMethod('pix')}>
+                    <Smartphone className={styles['paymentButtonIcon']} />
+                    <h4 className={styles['paymentButtonTitle']}>PIX</h4>
+                    <p className={styles['paymentButtonDescription']}>Pagamento instantâneo</p>
+                  </div>
+                )}
                 <div className={styles['paymentButton']} onClick={() => setPaymentMethod('credit')}>
                   <CreditCard className={styles['paymentButtonIcon']} />
                   <h4 className={styles['paymentButtonTitle']}>Cartão à Vista</h4>
@@ -158,7 +160,7 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
           )}
 
           {/* PIX Payment */}
-          {paymentMethod === 'pix' && (
+          {paymentMethod === 'pix' && (gift.paymentMethods?.pix || gift.code) && (
             <div className={styles['qrCodeContainer']}>
               <img src={gift.qrCode} alt="QR Code Pix" className={styles['qrCode']} />
               <p className={styles['qrCodeText']}>Escaneie o QR Code para pagar via Pix</p>
@@ -203,8 +205,7 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
                   onClick={() => window.open(gift.stripeButtonId, '_blank')}
                   style={{ width: '100%', marginTop: '16px' }}
                 >
-                  <CreditCard size={16} />
-                  ㅤPagar com Cartão à Vista
+                  <CreditCard size={16} />ㅤ Pagar com Cartão à Vista
                 </Button>
               </div>
               <Button

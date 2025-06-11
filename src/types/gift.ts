@@ -1,5 +1,5 @@
 export interface PaymentMethods {
-  pix: {
+  pix?: {
     qrCode: string;
     code: string;
   };

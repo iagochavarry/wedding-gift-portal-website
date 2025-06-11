@@ -23,7 +23,7 @@ interface GiftCore {
 }
 
 interface PaymentConfig {
-  pixCode: string;
+  pixCode?: string;
   creditCard?: {
     stripeUrl: string;
     pagarMeUrl?: string;
@@ -391,8 +391,6 @@ const giftsData: Array<GiftCore & { payment: PaymentConfig }> = [
       creditCard: {
         stripeUrl: 'https://buy.stripe.com/cNi7sM8Sh5eI0mmebJbV60e',
       },
-      pixCode:
-        '00020126580014br.gov.bcb.pix01361138a170-3d37-4627-839d-2131a73a3de35204000053039865802BR5925IAGO SICHINEL SILVA MARTI6014RIO DE JANEIRO62070503***6304A32E',
     },
   },
 ];
@@ -415,12 +413,15 @@ function createAssets(slug: string): GiftAssets {
  * Cria métodos de pagamento baseados na configuração
  */
 function createPaymentMethods(payment: PaymentConfig): PaymentMethods {
-  const paymentMethods: PaymentMethods = {
-    pix: {
+  const paymentMethods: PaymentMethods = {};
+
+  // Adiciona PIX apenas se pixCode existir
+  if (payment.pixCode) {
+    paymentMethods.pix = {
       qrCode: createAssets('').qrCode, // Será substituído depois
       code: payment.pixCode,
-    },
-  };
+    };
+  }
 
   if (payment.creditCard) {
     const creditCardConfig: PaymentMethods['creditCard'] = {
@@ -449,8 +450,10 @@ function createGift(giftData: GiftCore & { payment: PaymentConfig }): Gift {
   const assets = createAssets(giftData.slug);
   const paymentMethods = createPaymentMethods(giftData.payment);
 
-  // Atualiza o QR Code do PIX com o path correto
-  paymentMethods.pix.qrCode = assets.qrCode;
+  // Atualiza o QR Code do PIX com o path correto (apenas se PIX existir)
+  if (paymentMethods.pix) {
+    paymentMethods.pix.qrCode = assets.qrCode;
+  }
 
   const gift: Gift = {
     id: giftData.id,
@@ -465,9 +468,9 @@ function createGift(giftData: GiftCore & { payment: PaymentConfig }): Gift {
     // Campos legados para compatibilidade
     image: assets.image,
     qrCode: assets.qrCode,
-    code: paymentMethods.pix.code,
     creditCardEnabled: !!paymentMethods.creditCard,
     pagarMeEnabled: !!paymentMethods.creditCard?.pagarMe,
+    ...(paymentMethods.pix && { code: paymentMethods.pix.code }),
   };
 
   // Adiciona campos opcionais apenas se existirem
