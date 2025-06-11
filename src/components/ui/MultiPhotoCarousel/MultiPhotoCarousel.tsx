@@ -46,7 +46,7 @@ export const MultiPhotoCarousel = ({
 
     const interval = setInterval(goToNext, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, autoPlayInterval, images.length, visiblePhotos, maxIndex]);
+  }, [isAutoPlaying, autoPlayInterval, images.length, visiblePhotos, maxIndex, goToNext]);
 
   const handleMouseEnter = () => {
     setIsAutoPlaying(false);

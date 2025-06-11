@@ -35,7 +35,7 @@ Um website moderno e elegante para casamento, desenvolvido com React, TypeScript
 
 ### Build Tool & Development
 
-- **Vite 5.1.4** - Build tool moderna e rápida com Hot Module Replacement (HMR)
+- **Vite 5.4.19** - Build tool moderna e rápida com Hot Module Replacement (HMR)
 - **@vitejs/plugin-react** - Plugin oficial do React para Vite com suporte a Fast Refresh
 - **ES2020** - Target de compilação para JavaScript moderno
 - **ESNext Modules** - Sistema de módulos moderno do JavaScript
@@ -121,15 +121,22 @@ src/
 │   └── Gifts/                  # Lista de presentes
 ├── types/                      # Definições TypeScript
 ├── data/                       # Dados dos presentes
-├── styles/                     # Estilos globais
-└── utils/                      # Utilidades
+└── styles/                     # Estilos globais
 
-public/assets/
-├── couple/                     # Fotos do casal
-├── venue/                      # Fotos dos locais
-├── about/                      # Fotos para seção "Sobre nós"
-├── gifts/                      # Imagens dos presentes
-└── qrcodes/                    # QR codes para pagamento
+public/
+├── assets/                     # Assets gerais (imagens do casal, locais)
+│   ├── couple/                 # Fotos do casal
+│   ├── venue/                  # Fotos dos locais
+│   └── about/                  # Fotos para seção "Sobre nós"
+└── gifts/                      # Presentes organizados por slug
+    ├── [slug]/                 # Pasta individual de cada presente
+    │   ├── image.png           # Imagem do presente
+    │   └── qrcode.jpeg         # QR code do PIX
+    └── README.md               # Documentação dos presentes
+
+docs/                           # Documentação técnica
+├── HOST.md                     # Guia de hospedagem
+└── EMAIL_SETUP.md              # Configuração de email
 ```
 
 ## 🚀 Como Usar
@@ -160,40 +167,44 @@ npm run build
 npm run lint
 ```
 
-## 📷 Assets Necessários
-
-Para que o website funcione completamente, adicione as seguintes imagens:
-
-### Landing Page
-
-- `public/assets/couple/hero-photo.jpg` - Foto principal do casal
-- `public/assets/venue/ceremony-venue.jpg` - Local da cerimônia
-- `public/assets/venue/reception-venue.jpg` - Local da festa
-
-### Lista de Presentes
-
-- `public/assets/about/apartment.jpg` - Foto do apartamento
-- `public/assets/about/honeymoon.jpg` - Foto da lua de mel
-- `public/assets/gifts/` - Imagens dos presentes
-- `public/assets/qrcodes/` - QR codes para pagamento
-
 ## 🎁 Gerenciamento de Presentes
+
+### Estrutura Atual
+
+O projeto já possui todos os presentes configurados e organizados. Cada presente tem sua própria pasta em `public/gifts/[slug]/` contendo:
+
+- `image.png` - Imagem do presente
+- `qrcode.jpeg` - QR code para pagamento PIX
+
+### Presentes Incluídos
+
+**Casa** (12 itens): Jogo de panelas, buffet, carrinho bar, taças, mesinha de cabeceira, quadro, puff, lava-louças, lava e seca, soundbar, mesa de centro, jogo de cama.
+
+**Lua de Mel** (8 itens): Diárias em Positano e Puglia, jantares temáticos, passeio de barco, tours e aluguel de carro.
+
+**Customizado** (1 item): Valor livre escolhido pelo convidado.
 
 ### Adicionar Novos Presentes
 
-1. Adicione a imagem em `public/assets/gifts/`
-2. Gere o QR Code Pix e salve em `public/assets/qrcodes/`
+1. Crie uma pasta em `public/gifts/[novo-slug]/`
+2. Adicione `image.png` e `qrcode.jpeg` na pasta
 3. Edite `src/data/gifts.ts` para adicionar o presente:
 
 ```typescript
 {
   id: 'unique-id',
+  slug: 'novo-slug',
   name: 'Nome do Presente',
   description: 'Descrição detalhada',
   price: 299.90,
-  image: '/assets/gifts/produto.jpg',
-  qrCode: '/assets/qrcodes/qr-code.png',
-  category: 'casa' // ou 'lua-de-mel'
+  category: 'casa', // ou 'lua-de-mel' ou 'customizado'
+  payment: {
+    pixCode: 'código-pix-gerado',
+    creditCard: {
+      stripeUrl: 'link-do-stripe',
+      pagarMeUrl: 'link-do-pagarme' // opcional
+    }
+  }
 }
 ```
 
@@ -201,6 +212,7 @@ Para que o website funcione completamente, adicione as seguintes imagens:
 
 - `casa` - Para itens domésticos e decoração
 - `lua-de-mel` - Para experiências e viagens
+- `customizado` - Para valores personalizados
 
 ## 🎨 Personalização
 
@@ -232,11 +244,31 @@ O design é otimizado para:
 
 ## 🚀 Deploy
 
-O projeto pode ser deployado em qualquer serviço de hospedagem estática:
+### Vercel (Recomendado)
 
-- **Vercel**: `vercel --prod`
-- **Netlify**: Faça upload da pasta `dist/`
-- **GitHub Pages**: Configure GitHub Actions
+1. **Método Automático**: Conecte seu repositório GitHub ao Vercel
+
+   - Faça login em [vercel.com](https://vercel.com)
+   - Importe o repositório do GitHub
+   - Deploy automático a cada push
+
+2. **Método Manual**: Via CLI
+   ```bash
+   npm run build
+   npx vercel --prod
+   ```
+
+### Outras Opções
+
+- **Netlify**: Faça upload da pasta `dist/` após `npm run build`
+- **GitHub Pages**: Configure GitHub Actions para build automático
+- **Qualquer CDN**: O projeto gera arquivos estáticos na pasta `dist/`
+
+### Configuração Incluída
+
+- `vercel.json` - Configuração para roteamento SPA
+- Build otimizado com Vite
+- Assets organizados e otimizados
 
 ## 📄 Licença
 

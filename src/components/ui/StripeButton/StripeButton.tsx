@@ -5,7 +5,13 @@ interface StripeButtonProps {
   publishableKey: string;
 }
 
+// Definição de tipos para elemento customizado do Stripe
 declare global {
+  interface Window {
+    StripeButton?: unknown;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       'stripe-buy-button': {
@@ -20,7 +26,7 @@ export const StripeButton = ({ buyButtonId, publishableKey }: StripeButtonProps)
   useEffect(() => {
     // Garantir que o script do Stripe foi carregado
     const checkStripe = () => {
-      if (typeof window !== 'undefined' && (window as any).StripeButton) {
+      if (typeof window !== 'undefined' && window.StripeButton) {
         return true;
       }
       return false;

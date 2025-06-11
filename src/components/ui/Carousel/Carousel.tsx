@@ -34,7 +34,7 @@ export const Carousel = ({
 
     const interval = setInterval(goToNext, autoPlayInterval);
     return () => clearInterval(interval);
-  }, [autoPlay, autoPlayInterval, images.length]);
+  }, [autoPlay, autoPlayInterval, images.length, goToNext]);
 
   if (images.length === 0) return null;
 
