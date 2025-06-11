@@ -167,3 +167,107 @@
   color: #155724;
   margin: 0;
 }
+
+/* Payment Options */
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.paymentTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  text-align: center;
+  margin: 0 0 var(--spacing-4);
+}
+
+.paymentButtons {
+  display: flex;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.paymentButton {
+  flex: 1;
+  padding: var(--spacing-4);
+  border: 2px solid var(--color-neutral-300);
+  border-radius: var(--radius-md);
+  background: white;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.paymentButton:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.paymentButton.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.paymentButtonIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-primary);
+}
+
+.paymentButtonTitle {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin: 0;
+}
+
+.paymentButtonDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  text-align: center;
+  margin: 0;
+}
+
+.paymentContent {
+  margin-top: var(--spacing-4);
+}
+
+.stripeContainer {
+  display: flex;
+  justify-content: center;
+  margin: var(--spacing-4) 0;
+}
+
+.pagarMeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-4);
+  background-color: var(--color-neutral-100);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary-light);
+}
+
+.pagarMeDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-700);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .paymentButtons {
+    flex-direction: column;
+  }
+
+  .paymentButton {
+    padding: var(--spacing-3);
+  }
+}

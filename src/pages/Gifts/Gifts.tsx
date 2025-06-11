@@ -75,7 +75,8 @@ export const Gifts = () => {
             <Home className={styles.categoryIcon} />
             <h2 className={styles.categoryTitle}>Para Nossa Casa</h2>
             <p className={styles.categoryDescription}>
-              Itens especiais para tornar nossa casa um lar acolhedor
+              Itens especiais para tornar nossa casa um lar acolhedor. Clique no item para dar o
+              presente!
             </p>
           </div>
 

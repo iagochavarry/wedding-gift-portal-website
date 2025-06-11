@@ -25,14 +25,83 @@ Um website moderno e elegante para casamento, desenvolvido com React, TypeScript
 - **Animações Suaves**: Transições e hover effects elegantes
 - **Responsivo**: Mobile-first com breakpoints otimizados
 
-## 🛠️ Tecnologias
+## 🛠️ Stack Tecnológico
 
-- **Frontend**: React 18 + TypeScript
-- **Build Tool**: Vite
-- **Routing**: React Router DOM
-- **Styling**: CSS Modules + CSS Variables
-- **Icons**: Lucide React
-- **Linting**: ESLint + Prettier
+### Frontend Framework & Language
+
+- **React 18.2.0** - Biblioteca JavaScript para construção de interfaces de usuário
+- **TypeScript 5.2.2** - Superset tipado do JavaScript com configurações strict habilitadas
+- **JSX/TSX** - Sintaxe de extensão para escrever elementos React
+
+### Build Tool & Development
+
+- **Vite 5.1.4** - Build tool moderna e rápida com Hot Module Replacement (HMR)
+- **@vitejs/plugin-react** - Plugin oficial do React para Vite com suporte a Fast Refresh
+- **ES2020** - Target de compilação para JavaScript moderno
+- **ESNext Modules** - Sistema de módulos moderno do JavaScript
+
+### Routing & Navigation
+
+- **React Router DOM 6.20.1** - Roteamento declarativo para React
+- **BrowserRouter** - Implementação de roteador para navegadores web
+- **Routes & Route** - Componentes para definição de rotas
+
+### Styling & Design System
+
+- **CSS Modules** - Estilos CSS com escopo local automático
+- **CSS Custom Properties (Variables)** - Sistema de design tokens para cores, espaçamentos e tipografia
+- **Mobile-First Responsive Design** - Abordagem responsiva começando pelo mobile
+- **Apple-inspired Design System** - Design limpo e minimalista inspirado no ecossistema Apple
+
+### UI Components & Icons
+
+- **Lucide React 0.344.0** - Biblioteca de ícones SVG otimizados para React
+- **Component Library Custom** - Sistema de componentes próprio com Button, Modal, etc.
+- **Compound Components Pattern** - Padrões avançados de composição de componentes
+
+### Payment Integration
+
+- **Stripe** - Processamento de pagamentos com cartão de crédito
+  - `@stripe/stripe-js` - SDK JavaScript oficial do Stripe
+  - Buy Button integration para checkout rápido
+- **Pagar.me** - Gateway brasileiro para pagamentos parcelados
+- **PIX Integration** - Sistema de pagamentos instantâneos brasileiro via QR Code
+
+### Email & Communication
+
+- **EmailJS 4.4.1** - Serviço para envio de emails diretamente do frontend
+- **WhatsApp Business API** - Integração para comunicação via WhatsApp
+
+### Development Tools & Quality
+
+- **ESLint 8.56.0** - Linter para identificação de problemas no código
+  - `@typescript-eslint/eslint-plugin` - Regras específicas para TypeScript
+  - `@typescript-eslint/parser` - Parser do TypeScript para ESLint
+  - `eslint-plugin-react` - Regras específicas para React
+  - `eslint-plugin-react-hooks` - Regras para React Hooks
+  - `eslint-plugin-react-refresh` - Suporte ao React Fast Refresh
+- **TypeScript Strict Mode** - Configurações rigorosas de tipagem
+- **Path Mapping** - Aliases de importação (`@/*` para `src/*`)
+
+### Build & Deployment
+
+- **Static Site Generation** - Build estático para deploy em CDNs
+- **Tree Shaking** - Eliminação de código não utilizado
+- **Code Splitting** - Divisão automática do código para carregamento otimizado
+- **Asset Optimization** - Otimização automática de imagens e assets
+
+### Browser Support & Standards
+
+- **ES2020+ Features** - Suporte a funcionalidades modernas do JavaScript
+- **DOM & DOM.Iterable** - APIs modernas do navegador
+- **Modern Bundle Target** - Bundles otimizados para navegadores modernos
+
+### Performance & Optimization
+
+- **React.StrictMode** - Modo estrito do React para desenvolvimento
+- **Vite HMR** - Hot Module Replacement para desenvolvimento rápido
+- **Lazy Loading** - Carregamento sob demanda de componentes
+- **Image Optimization** - Otimização de imagens para web
 
 ## 📁 Estrutura do Projeto
 

@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser';
 import { Gift } from '../../../types/gift';
 import { Modal } from '../../ui/Modal/Modal';
 import { Button } from '../../ui/Button/Button';
-import { Copy, Check, Send } from 'lucide-react';
+import { Copy, Check, Send, Smartphone, CreditCard, Banknote } from 'lucide-react';
 import styles from './GiftCard.module.css';
 
 interface GiftCardProps {
@@ -17,6 +17,7 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState<'pix' | 'credit' | 'installment' | null>(null);
 
   // Inicializar EmailJS com User ID (funcionando!)
   useEffect(() => {
@@ -29,11 +30,13 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
     setName('');
     setMessage('');
     setSent(false);
+    setPaymentMethod(null);
   };
 
   const handleCopyQRCode = async () => {
     try {
-      await navigator.clipboard.writeText(gift.code);
+      const codeToeCopy = gift.code || gift.paymentMethods?.pix?.code || '';
+      await navigator.clipboard.writeText(codeToeCopy);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -124,77 +127,181 @@ export const GiftCard = ({ gift }: GiftCardProps) => {
         <div className={styles['modalContent']}>
           <img src={gift.image} alt={gift.name} className={styles['modalImage']} />
           <p className={styles['description']}>{gift.description}</p>
-          <div className={styles['qrCodeContainer']}>
-            <img src={gift.qrCode} alt="QR Code Pix" className={styles['qrCode']} />
-            <p className={styles['qrCodeText']}>Escaneie o QR Code para pagar via Pix</p>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={handleCopyQRCode}
-              style={{ marginTop: '12px' }}
-            >
-              {copied ? (
-                <>
-                  <Check size={16} />ㅤ Código Copiado!
-                </>
-              ) : (
-                <>
-                  <Copy size={16} /> ㅤCopie o QR-code
-                </>
-              )}
-            </Button>
-          </div>
 
-          {sent ? (
-            <div className={styles['messageSuccess']}>
-              <Check size={24} />
-              <p>Mensagem enviada com sucesso! Obrigado pelo presente! 💕</p>
+          {/* Payment Method Selection */}
+          {!paymentMethod && (
+            <div className={styles['paymentOptions']}>
+              <h3 className={styles['paymentTitle']}>Escolha a forma de pagamento</h3>
+              <div className={styles['paymentButtons']}>
+                <div className={styles['paymentButton']} onClick={() => setPaymentMethod('pix')}>
+                  <Smartphone className={styles['paymentButtonIcon']} />
+                  <h4 className={styles['paymentButtonTitle']}>PIX</h4>
+                  <p className={styles['paymentButtonDescription']}>Pagamento instantâneo</p>
+                </div>
+                <div className={styles['paymentButton']} onClick={() => setPaymentMethod('credit')}>
+                  <CreditCard className={styles['paymentButtonIcon']} />
+                  <h4 className={styles['paymentButtonTitle']}>Cartão à Vista</h4>
+                  <p className={styles['paymentButtonDescription']}>Visa, Mastercard, etc.</p>
+                </div>
+                {gift.pagarMeEnabled && (
+                  <div
+                    className={styles['paymentButton']}
+                    onClick={() => setPaymentMethod('installment')}
+                  >
+                    <Banknote className={styles['paymentButtonIcon']} />
+                    <h4 className={styles['paymentButtonTitle']}>Cartão Parcelado</h4>
+                    <p className={styles['paymentButtonDescription']}>Até 12x com juros*</p>
+                  </div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div className={styles['messageForm']}>
-              <h3>Em seguida, deixe sua mensagem para o casal</h3>
+          )}
 
-              <div className={styles['formGroup']}>
-                <label htmlFor="name">Nome:</label>
-                <input
-                  id="name"
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Seu nome"
-                  className={styles['formInput']}
-                />
-              </div>
-
-              <div className={styles['formGroup']}>
-                <label htmlFor="message">Mensagem:</label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Sua mensagem para o casal..."
-                  rows={4}
-                  className={styles['formTextarea']}
-                />
-              </div>
-
+          {/* PIX Payment */}
+          {paymentMethod === 'pix' && (
+            <div className={styles['qrCodeContainer']}>
+              <img src={gift.qrCode} alt="QR Code Pix" className={styles['qrCode']} />
+              <p className={styles['qrCodeText']}>Escaneie o QR Code para pagar via Pix</p>
               <Button
-                variant="primary"
-                size="lg"
-                fullWidth
-                onClick={handleSendMessage}
-                disabled={sending}
+                variant="secondary"
+                size="sm"
+                onClick={handleCopyQRCode}
+                style={{ marginTop: '12px' }}
               >
-                {sending ? (
-                  <>Enviando...</>
+                {copied ? (
+                  <>
+                    <Check size={16} />ㅤ Código Copiado!
+                  </>
                 ) : (
                   <>
-                    <Send size={16} />
-                    ㅤEnviar Mensagem
+                    <Copy size={16} /> ㅤCopie o QR-code
                   </>
                 )}
               </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPaymentMethod(null)}
+                style={{ marginTop: '8px' }}
+              >
+                Voltar para métodos de pagamento
+              </Button>
             </div>
+          )}
+
+          {/* Credit Card Payment */}
+          {paymentMethod === 'credit' && gift.stripeButtonId && (
+            <div className={styles['paymentContent']}>
+              <div className={styles['pagarMeContainer']}>
+                <p className={styles['pagarMeDescription']}>
+                  Você será redirecionado para o Stripe para finalizar sua compra com cartão à
+                  vista.
+                </p>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => window.open(gift.stripeButtonId, '_blank')}
+                  style={{ width: '100%', marginTop: '16px' }}
+                >
+                  <CreditCard size={16} />
+                  ㅤPagar com Cartão à Vista
+                </Button>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPaymentMethod(null)}
+                style={{ marginTop: '12px', width: '100%' }}
+              >
+                Voltar para métodos de pagamento
+              </Button>
+            </div>
+          )}
+
+          {/* Installment Payment (Pagar.me) */}
+          {paymentMethod === 'installment' && gift.pagarMeUrl && (
+            <div className={styles['paymentContent']}>
+              <div className={styles['pagarMeContainer']}>
+                <p className={styles['pagarMeDescription']}>
+                  Você será redirecionado para o Pagar.me para finalizar sua compra com cartão
+                  parcelado (até 12x com juros*).
+                </p>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={() => window.open(gift.pagarMeUrl, '_blank')}
+                  style={{ width: '100%', marginTop: '16px' }}
+                >
+                  <Banknote size={16} />
+                  ㅤPagar com Cartão Parcelado
+                </Button>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPaymentMethod(null)}
+                style={{ marginTop: '12px', width: '100%' }}
+              >
+                Voltar para métodos de pagamento
+              </Button>
+            </div>
+          )}
+
+          {/* Message Form - only show after payment method is selected */}
+          {paymentMethod && (
+            <>
+              {sent ? (
+                <div className={styles['messageSuccess']}>
+                  <Check size={24} />
+                  <p>Mensagem enviada com sucesso! Obrigado pelo presente! 💕</p>
+                </div>
+              ) : (
+                <div className={styles['messageForm']}>
+                  <h3>Em seguida, deixe sua mensagem para o casal</h3>
+
+                  <div className={styles['formGroup']}>
+                    <label htmlFor="name">Nome:</label>
+                    <input
+                      id="name"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Seu nome"
+                      className={styles['formInput']}
+                    />
+                  </div>
+
+                  <div className={styles['formGroup']}>
+                    <label htmlFor="message">Mensagem:</label>
+                    <textarea
+                      id="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Sua mensagem para o casal..."
+                      rows={4}
+                      className={styles['formTextarea']}
+                    />
+                  </div>
+
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    onClick={handleSendMessage}
+                    disabled={sending}
+                  >
+                    {sending ? (
+                      <>Enviando...</>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        ㅤEnviar Mensagem
+                      </>
+                    )}
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </Modal>
