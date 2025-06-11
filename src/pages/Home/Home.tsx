@@ -141,7 +141,7 @@ export const Home = () => {
                 </div>
                 <div className={styles['detail']}>
                   <Heart className={styles['icon']} />
-                  <span>17h00 - Festa</span>
+                  <span>17h - Festa</span>
                 </div>
               </div>
             </div>
