@@ -15,8 +15,6 @@ A working, modern and elegant wedding website built with React and TypeScript. T
   <img src="https://img.shields.io/badge/Pagar.me-32a852?style=for-the-badge&logo=pagarme&logoColor=green" alt="Pagar.me" />
 </div>
 
-##
-
 ## ✨ Features
 
 ### 🏠 Landing Page
@@ -66,15 +64,6 @@ _Interactive gift list with categorized items and smooth animations_
   - Installment options support
 - PIX (Brazilian instant payment) via QR Code
 - Pagar.me gateway for Brazilian installment payment processing
-
-#### Payment Links Setup
-
-- Stripe Payment Links for quick checkout
-  - Create payment links in Stripe Dashboard
-  - Customize branding and payment options
-  - Support for multiple currencies
-  - Automatic receipt generation
-  - Track payment status in real-time
 
 ### UI/UX
 
