@@ -1,19 +1,10 @@
-# 💕 Wedding Website - Iago & Jas
+# 💕 Wedding Website - Jas & Iago
 
 A working, modern and elegant wedding website built with React and TypeScript. The project features an emotional landing page and an interactive categorized gift list with integrated payment solutions.
 
 [Access the website here](https://casamento-jas-e-iago.com)
 
-## 🛠️ Powered by
-
-<div align="center">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
-  <img src="https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe" />
-  <img src="https://img.shields.io/badge/Pagar.me-32a852?style=for-the-badge&logo=pagarme&logoColor=green" alt="Pagar.me" />
-</div>
+---
 
 ## ✨ Features
 
