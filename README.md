@@ -30,15 +30,12 @@ _Modern and elegant landing page with hero section and wedding details_
 ![Gift List](docs/screenshots/gift-list.png)
 _Interactive gift list with categorized items and smooth animations_
 
-### Gift Card
+### Gift Components
 
-![Gift Card](docs/screenshots/gift-card.png)
-_Individual gift card with image and basic information_
-
-### Gift Details & Payment
-
-![Gift Details](docs/screenshots/gift-details.png)
-_Expanded gift view with payment options and PIX integration_
+| Gift Card                                               | Gift Details & Payment                                        |
+| ------------------------------------------------------- | ------------------------------------------------------------- |
+| ![Gift Card](docs/screenshots/gift-card.png)            | ![Gift Details](docs/screenshots/gift-details.png)            |
+| _Individual gift card with image and basic information_ | _Expanded gift view with payment options and PIX integration_ |
 
 ## 🛠️ Tech Stack
 
