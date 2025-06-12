@@ -26,6 +26,7 @@ export const Home = () => {
     '/assets/couple/photo-17.jpeg',
     '/assets/couple/photo-18.jpeg',
     '/assets/couple/photo-19.jpeg',
+    '/assets/couple/photo-20.jpeg',
   ];
 
   // Calcular dias até o casamento (4 de outubro de 2025)

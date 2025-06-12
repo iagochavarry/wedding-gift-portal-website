@@ -38,7 +38,7 @@ export const Gifts = () => {
                   Nossa Nova Casa
                 </h2>
                 <p className={styles.aboutDescription}>
-                  Estamos montando nosso primeiro lar juntos em botafogo! Cada item da nossa lista
+                  Estamos montando nosso primeiro lar juntos em Botafogo! Cada item da nossa lista
                   Casa foi pensado com carinho para criar um ambiente acolhedor e funcional onde
                   começaremos nossa vida a dois.
                 </p>
