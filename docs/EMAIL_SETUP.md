@@ -8,7 +8,14 @@ Este arquivo explica como configurar o EmailJS para habilitar o envio real de em
 2. Crie uma conta gratuita
 3. Acesse o painel de controle
 
-## 2. Configurar Serviço de Email
+### Payment Links Setup
+
+- Stripe Payment Links for quick checkout
+  - Create payment links in Stripe Dashboard
+  - Customize branding and payment options
+  - Support for multiple currencies
+  - Automatic receipt generation
+  - Track payment status in real-time## 2. Configurar Serviço de Email
 
 1. No painel, vá para **Email Services**
 2. Clique em **Add New Service**
