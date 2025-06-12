@@ -13,8 +13,6 @@ A working, modern and elegant wedding website built with React and TypeScript. T
   <img src="https://img.shields.io/badge/Pagar.me-32a852?style=for-the-badge&logo=pagarme&logoColor=green" alt="Pagar.me" />
 </div>
 
----
-
 ## ✨ Features
 
 ### 🏠 Landing Page
