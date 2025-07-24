@@ -1,0 +1,101 @@
+.rsvpSection {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f3f0 0%, #f1ebe7 100%);
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.rsvpContent {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.rsvpTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #8b4513;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.rsvpText {
+    font-size: 1.1rem;
+    color: #5a5a5a;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.emailButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #8b4513;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+.emailButton:hover {
+    background: #6b3410;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+.emailButton:active {
+    transform: translateY(0);
+}
+
+.emailIcon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.emailText {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .rsvpSection {
+        padding: 3rem 1rem;
+    }
+
+    .rsvpTitle {
+        font-size: 2rem;
+    }
+
+    .rsvpText {
+        font-size: 1rem;
+    }
+
+    .emailButton {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .emailText {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .emailButton {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .emailText {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+}

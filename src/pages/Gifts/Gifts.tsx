@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Home, MapPin, Gift } from 'lucide-react';
 import { GiftCard } from '../../components/features/GiftCard/GiftCard';
+import { RSVPSection } from '../../components/features/RSVPSection/RSVPSection';
 import { gifts } from '../../data/gifts';
 import styles from './Gifts.module.css';
 
@@ -125,6 +126,9 @@ export const Gifts = () => {
           </div>
         </div>
       </section>
+
+      {/* RSVP Section */}
+      <RSVPSection />
     </div>
   );
 };

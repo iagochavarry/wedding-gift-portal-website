@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, MapPin, Heart, Gift } from 'lucide-react';
 import { Button } from '../../components/ui/Button/Button';
 import { MultiPhotoCarousel } from '../../components/ui/MultiPhotoCarousel/MultiPhotoCarousel';
+import { RSVPSection } from '../../components/features/RSVPSection/RSVPSection';
 import styles from './Home.module.css';
 
 export const Home = () => {
@@ -156,6 +157,9 @@ export const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* RSVP Section */}
+      <RSVPSection />
 
       {/* Gift List CTA */}
       <section className={styles['giftCta']}>
