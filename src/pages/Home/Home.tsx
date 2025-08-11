@@ -145,6 +145,9 @@ export const Home = () => {
                   <Heart className={styles['icon']} />
                   <span>17h - Festa</span>
                 </div>
+                <div className={styles['detail']}>
+                  <span>🤵🏻👗 Traje - Passeio Completo</span>
+                </div>
               </div>
             </div>
             <div className={styles['receptionImage']}>
